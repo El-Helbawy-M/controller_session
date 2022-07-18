@@ -9,18 +9,31 @@ class AuthController {
   Future<bool> signIn(String email, String password) async {
     //validation level
     if (validator.validateEmail(email) && validator.validatePassword(password)) {
+
       //Authentication level
       if (await auther.signIn(email, password)) {
+
         //Confirmation leve
         Confirm.sendConfirm(email);
         return true;
+        //================================
+
       }
-      print("F2");
+      //================================
+
+
       //Authentication failed
+      print("F2");
       return false;
+      //================================
+      
     }
-    print("F1");
+    //================================
+    
+    
     //validation failed
+    print("F1");
     return false;
+    //================================
   }
 }
